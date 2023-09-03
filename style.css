@@ -1,0 +1,621 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Ubuntu", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background-color: hsl(217, 100%, 97%);
+  padding: 80px 40px;
+}
+
+main {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  border-radius: 15px;
+  padding: 15px;
+  max-width: 900px;
+  height: 568px;
+  background-color: white;
+  column-gap: 15px;
+  box-shadow: 4px 4px 16px -8px rgba(34, 60, 80, 0.2);
+}
+
+.page {
+  height: 100%;
+}
+
+.btn {
+  color: white;
+  border: none;
+  font-weight: 500;
+  border-radius: 7px;
+  padding: 13px 25px;
+  transition: background 0.2s ease-in-out;
+}
+
+.go-back {
+  display: none;
+  border: none;
+  color: hsl(231, 11%, 63%);
+  background-color: transparent;
+  font-size: 1rem;
+  transition: color 0.2s ease-in-out;
+}
+
+.go-back:hover {
+  cursor: pointer;
+  color: hsl(213, 96%, 18%);
+}
+
+.sidebar {
+  border-radius: 10px;
+  padding: 40px;
+  background-image: url("./assets/images/bg-sidebar-desktop.svg");
+  background-size: cover;
+  flex-basis: 33%;
+}
+
+.sidebar ul {
+  list-style: none;
+  text-transform: uppercase;
+  color: hsl(229, 24%, 87%);
+  font-size: 0.8rem;
+}
+
+.sidebar li {
+  display: flex;
+  align-items: center;
+  column-gap: 13px;
+  user-select: none;
+}
+
+.sidebar li:not(:last-child) {
+  margin-bottom: 30px;
+}
+
+.number-of-step {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 2px solid white;
+  font-weight: bold;
+  color: white;
+  height: min-content;
+  width: 40px;
+  padding: 10px;
+  font-size: 0.9rem;
+  flex: 0 0 auto;
+  background-color: transparent;
+  transition: all 0.4s ease-in-out;
+}
+
+.page-title {
+  color: white;
+  font-weight: bold;
+  font-size: 0.9rem;
+  margin-top: 3px;
+}
+
+.selected {
+  background-color: hsl(206, 94%, 87%);
+  border-color: hsl(206, 94%, 87%);
+  color: hsl(213, 96%, 18%);
+}
+
+.form-section {
+  flex-basis: 66%;
+  display: grid;
+  justify-content: center;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 400px 1fr;
+}
+
+.form-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  padding-bottom: 10px;
+  color: hsl(213, 96%, 18%);
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+}
+
+.main-form {
+  width: 100%;
+  height: 100%;
+  padding-top: 50px;
+}
+
+.form-heading {
+  margin-bottom: 12px;
+}
+
+.form-text {
+  color: hsl(231, 11%, 63%);
+  margin-bottom: 30px;
+}
+
+.form-footer {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+}
+
+/* Step 1 */
+
+.error-msg {
+  position: absolute;
+  color: #ed3548;
+  right: 0px;
+}
+
+.input-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 25px;
+}
+
+label {
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.input-container input {
+  border: 1px solid #d6d9e6;
+  border-radius: 10px;
+  padding: 12px 15px;
+  color: hsl(213, 96%, 18%);
+  font-weight: 500;
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+.input-container input:focus {
+  outline: none;
+  border-color: hsl(243, 100%, 62%);
+}
+
+.input-container input.input-error {
+  border-color: hsl(354, 84%, 57%);
+}
+
+.next-step {
+  background-color: hsl(213, 96%, 18%);
+}
+
+.next-step:hover {
+  cursor: pointer;
+  background: hsl(243, 100%, 62%);
+}
+
+/* Step 2 */
+
+.cards {
+  display: flex;
+  justify-content: space-between;
+  column-gap: 20px;
+}
+
+.plan-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid hsl(229, 24%, 87%);
+  border-radius: 10px;
+  padding: 20px 15px;
+  transition: border-color 0.2s ease-in-out;
+  flex-basis: 33%;
+}
+
+.plan-card svg {
+  margin-bottom: 45px;
+}
+
+.plan-card:hover {
+  cursor: pointer;
+  border-color: hsl(243, 100%, 62%);
+}
+
+.plan-card label {
+  font-size: 1rem;
+}
+
+.plan-card .price {
+  font-size: 0.9rem;
+  color: hsl(231, 11%, 63%);
+  margin-top: 5px;
+}
+
+.plan-card.selected {
+  background-color: hsl(217, 100%, 97%);
+  border-color: hsl(243, 100%, 62%);
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+.message {
+  color: hsl(213, 96%, 18%) !important;
+  font-weight: 500;
+  font-size: smaller;
+  margin-top: 5px;
+}
+
+.subscription-type {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  font-size: 0.9rem;
+  column-gap: 15px;
+  border-radius: 10px;
+  background-color: hsl(217, 100%, 97%);
+  padding: 13px;
+  margin-top: 30px;
+  color: hsl(231, 11%, 63%);
+}
+.subscription-type .selected {
+  color: hsl(213, 96%, 18%);
+  background-color: inherit;
+}
+
+.switch-btn {
+  position: relative;
+  width: 40px;
+  height: 20px;
+  border-radius: 20px;
+  background-color: hsl(213, 96%, 18%);
+}
+
+.switch-btn:hover {
+  cursor: pointer;
+}
+
+.switch-btn::after {
+  display: inline-block;
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: white;
+  transition: left 0.2s ease-in-out;
+}
+
+.switch-on::after {
+  left: 24px;
+}
+
+/* Step 3 */
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  border: 1px solid hsl(229, 24%, 87%);
+  padding: 20px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+}
+
+.checkbox-container.selected {
+  background-color: hsl(217, 100%, 97%);
+  border-color: hsl(243, 100%, 62%);
+}
+
+.checkbox-container:hover {
+  border-color: hsl(243, 100%, 62%);
+  transition: all 0.2s ease-out;
+  cursor: pointer;
+}
+
+.checkbox-container:not(:first-child) {
+  margin-top: 20px;
+}
+
+input[type="checkbox"] {
+  visibility: hidden;
+  opacity: 0;
+  width: 0;
+}
+
+input[type="checkbox"] ~ label {
+  pointer-events: none;
+  height: 20px;
+  width: 20px;
+  border: 1px solid hsl(229, 24%, 87%);
+  border-radius: 5px;
+  margin-right: 10px;
+  background-position: center;
+  transition: all 0.2s ease-out;
+}
+
+input[type="checkbox"] ~ label:hover {
+  cursor: pointer;
+}
+
+input[type="checkbox"]:checked ~ label {
+  background-image: url(./assets/images/icon-checkmark.svg);
+  background-repeat: no-repeat;
+  background-color: hsl(243, 100%, 62%);
+  border-color: hsl(243, 100%, 62%);
+}
+
+.addons-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.addons-info span {
+  color: hsl(243, 100%, 62%);
+  font-weight: 500;
+}
+
+.addon-title {
+  font-weight: bold;
+}
+
+.addon-desc {
+  color: hsl(231, 11%, 63%);
+}
+
+.addon-price {
+  display: inline-block;
+}
+
+/* Step 4 */
+
+.double-check-container {
+  border-radius: 10px;
+  padding: 20px;
+  background-color: hsl(217, 100%, 97%);
+  display: flex;
+  flex-direction: column;
+}
+
+.sub-type {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  padding-bottom: 20px;
+  border-bottom: 1px solid hsl(229, 24%, 87%);
+}
+
+.sub-type-texr + p {
+  font-weight: 500;
+}
+
+.change-btn {
+  color: hsl(231, 11%, 63%);
+  text-decoration: underline;
+  font-weight: 400;
+  font-size: 0.9em;
+  margin-top: 5px;
+  transition: color 0.2s ease-in-out;
+}
+
+.change-btn:hover {
+  color: hsl(243, 100%, 62%);
+  cursor: pointer;
+}
+
+.services {
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+  padding-top: 15px;
+  text-align: center;
+}
+
+.service {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+}
+
+.service-name {
+  color: hsl(231, 11%, 63%);
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  color: hsl(231, 11%, 63%);
+  font-size: 0.9rem;
+}
+
+.total-price {
+  color: hsl(243, 100%, 62%);
+  font-weight: bold;
+  font-size: 1.15rem;
+}
+
+.confirm-btn {
+  display: none;
+  background-color: hsl(243, 100%, 62%);
+}
+
+.confirm-btn:hover {
+  cursor: pointer;
+  background-color: hsl(228, 100%, 70%);
+}
+
+/* Step 5 */
+
+.page.final-section {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+}
+
+.final-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  color: hsl(213, 96%, 18%);
+}
+
+.final-section .form-heading {
+  margin-top: 20px;
+}
+
+.final-section .form-text {
+  margin-top: 5px;
+  text-align: center;
+}
+
+.final-section svg {
+  width: 70px;
+}
+
+@media (max-width: 730px) {
+  html {
+    font-size: 15px;
+  }
+
+  body {
+    padding: 0;
+  }
+
+  main {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 100px 80px 1fr;
+    border-radius: 0;
+    background-color: hsl(217, 100%, 97%);
+    box-shadow: none;
+  }
+
+  .sidebar {
+    background-image: url("./assets/images/bg-sidebar-mobile.svg");
+    border-radius: 0;
+    grid-column: 1 / 2;
+    grid-row: 1 / 3;
+  }
+
+  .sidebar ul {
+    display: flex;
+    flex-direction: row;
+    column-gap: 20px;
+    justify-content: center;
+  }
+
+  .sidebar li:not(:last-child) {
+    margin-bottom: 0;
+  }
+
+  .step-info {
+    display: none;
+  }
+
+  .form-section {
+    grid-column: 1 / 2;
+    grid-row: 2 / 4;
+    background-color: transparent;
+  }
+
+  .form-content {
+    padding-bottom: 0;
+  }
+
+  .main-form,
+  .final-section {
+    background-color: white;
+    border-radius: 10px;
+    padding: 30px 20px;
+    height: fit-content;
+    box-shadow: 4px 4px 16px -8px rgba(34, 60, 80, 0.2);
+  }
+
+  .input-container:last-child {
+    margin-bottom: 0;
+  }
+
+  .form-footer {
+    background-color: white;
+    padding: 15px 25px;
+    width: 100vw;
+    margin-top: 20px;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 400px 1fr;
+  }
+
+  .btn {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    width: max-content;
+  }
+
+  .next-step,
+  .confirm-btn {
+    justify-self: end;
+  }
+
+  .go-back {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    justify-self: start;
+  }
+
+  .cards {
+    flex-direction: column;
+    row-gap: 20px;
+  }
+
+  .plan-card {
+    flex-direction: row;
+  }
+
+  .plan-card svg {
+    margin-bottom: 0;
+    margin-right: 20px;
+  }
+
+  .addons-info span {
+    display: flex;
+  }
+
+  .total {
+    padding-bottom: 0;
+  }
+}
+
+@media (max-width: 450px) {
+  .form-section,
+  .form-footer {
+    grid-template-columns: 100%;
+  }
+
+  .form-content {
+    grid-column: 1 / 2;
+  }
+
+  .main-form,
+  .final-section {
+    width: calc(100vw - 50px);
+  }
+
+  .btn,
+  .go-back {
+    grid-column: 1 / 2;
+  }
+}
